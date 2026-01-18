@@ -1,0 +1,82 @@
+﻿{% extends 'base.html' %}
+
+{% block title %}{% if item %}Edit {{ item.name }}{% else %}Add New Item{% endif %}{% endblock %}
+
+{% block content %}
+<div style="max-width: 600px; margin: 2rem auto;">
+    <div class="glass-card">
+        <h2 style="margin-bottom: 2rem;">{% if item %}Edit Item{% else %}Add Item{% endif %}</h2>
+        <form method="post">
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+            <div class="alert alert-error"
+                style="color: var(--danger); background: rgba(239, 68, 68, 0.1); padding: 0.75rem; border-radius: 0.5rem; margin-bottom: 1.5rem;">
+                {{ form.non_field_errors }}
+            </div>
+            {% endif %}
+            <div style="margin-bottom: 1.5rem;">
+                <label
+                    style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.875rem;">Item
+                    Name</label>
+                {{ form.name }}
+                {% if form.name.errors %}
+                <div style="color: var(--danger); font-size: 0.8rem; margin-top: 0.25rem;">{{ form.name.errors.0 }}
+                </div>
+                {% endif %}
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <label
+                    style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.875rem;">Description</label>
+                {{ form.description }}
+                {% if form.description.errors %}
+                <div style="color: var(--danger); font-size: 0.8rem; margin-top: 0.25rem;">{{ form.description.errors.0
+                    }}</div>
+                {% endif %}
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <label
+                    style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.875rem;">Quantity</label>
+                {{ form.quantity }}
+                {% if form.quantity.errors %}
+                <div style="color: var(--danger); font-size: 0.8rem; margin-top: 0.25rem;">{{ form.quantity.errors.0 }}
+                </div>
+                {% endif %}
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <label
+                    style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.875rem;">Price</label>
+                {{ form.price }}
+                {% if form.price.errors %}
+                <div style="color: var(--danger); font-size: 0.8rem; margin-top: 0.25rem;">{{ form.price.errors.0 }}
+                </div>
+                {% endif %}
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <label
+                    style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.875rem;">Department
+                    (Optional)</label>
+                {{ form.department }}
+                {% if form.department.errors %}
+                <div style="color: var(--danger); font-size: 0.8rem; margin-top: 0.25rem;">{{ form.department.errors.0
+                    }}</div>
+                {% endif %}
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <label
+                    style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.875rem;">Assign
+                    To (Optional)</label>
+                {{ form.assigned_to }}
+                {% if form.assigned_to.errors %}
+                <div style="color: var(--danger); font-size: 0.8rem; margin-top: 0.25rem;">{{ form.assigned_to.errors.0
+                    }}</div>
+                {% endif %}
+            </div>
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                <button type="submit" class="btn btn-primary" style="flex: 1;">Save Changes</button>
+                <a href="{% url 'inventory_list' %}" class="btn"
+                    style="background: rgba(255, 255, 255, 0.1); flex: 1; text-align: center;">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

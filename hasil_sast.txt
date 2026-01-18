@@ -1,0 +1,84 @@
+
+Testing C:\Users\User\Desktop\SSD Project Background Change\SSD Project - Copy\secure-django-app ...
+
+Open Issues
+
+ ✗ [LOW] Use of Hardcoded Credentials
+   Finding ID: c6e2bf72-58db-4d31-abfb-b808fbd6c640
+   Path: core/tests_admin.py, line 13
+   Info: Do not hardcode credentials in code. Found hardcoded credential used in username.
+
+ ✗ [LOW] Use of Hardcoded Credentials
+   Finding ID: bfcc8f45-67cb-4543-8ce6-9b9d1bdc387f
+   Path: core/tests_admin.py, line 26
+   Info: Do not hardcode credentials in code. Found hardcoded credential used in username.
+
+ ✗ [LOW] Use of Hardcoded Credentials
+   Finding ID: 936f258c-c117-4b0b-b7a9-2840c47bfc46
+   Path: core/tests_admin.py, line 32
+   Info: Do not hardcode credentials in code. Found hardcoded credential used in username.
+
+ ✗ [LOW] Use of Hardcoded Credentials
+   Finding ID: f0fbee8b-c20d-4bd4-99f5-0f5d5523afef
+   Path: core/tests_admin.py, line 43
+   Info: Do not hardcode credentials in code. Found hardcoded credential used in username.
+
+ ✗ [LOW] Use of Hardcoded Credentials
+   Finding ID: d4fe672a-ff03-4d36-96e2-faf1f42e176f
+   Path: core/tests_admin.py, line 52
+   Info: Do not hardcode credentials in code. Found hardcoded credential used in username.
+
+ ✗ [LOW] Use of Hardcoded Passwords
+   Finding ID: 72d0e0f5-d950-4c49-bb1b-acd87a2f957f
+   Path: core/tests_admin.py, line 13
+   Info: Do not hardcode passwords in code. Found hardcoded password used in password.
+
+ ✗ [LOW] Use of Hardcoded Passwords
+   Finding ID: 973cfd7f-c84b-41ce-b49a-1eb2fdd898f0
+   Path: core/tests_admin.py, line 26
+   Info: Do not hardcode passwords in code. Found hardcoded password used in password.
+
+ ✗ [LOW] Use of Hardcoded Passwords
+   Finding ID: 817b3646-e581-42e4-a8cd-5bde649912cc
+   Path: core/tests_admin.py, line 32
+   Info: Do not hardcode passwords in code. Found hardcoded password used in password.
+
+ ✗ [LOW] Use of Hardcoded Passwords
+   Finding ID: 8fd2b5ac-94ac-453c-9688-284d7bb3f397
+   Path: core/tests_admin.py, line 38
+   Info: Do not hardcode passwords in code. Found hardcoded password used in password.
+
+ ✗ [LOW] Use of Hardcoded Passwords
+   Finding ID: 4902d6a8-735a-442f-9284-12262016e6e4
+   Path: core/tests_admin.py, line 43
+   Info: Do not hardcode passwords in code. Found hardcoded password used in password.
+
+ ✗ [LOW] Use of Hardcoded Passwords
+   Finding ID: feec7f92-4c42-4c10-a965-d54c6844e45d
+   Path: core/tests_admin.py, line 52
+   Info: Do not hardcode passwords in code. Found hardcoded password used in password.
+
+ ✗ [LOW] Use of Hardcoded Passwords
+   Finding ID: d5e59224-f82a-4403-b006-c0d3d22d3087
+   Path: core/tests_admin.py, line 63
+   Info: Do not hardcode passwords in code. Found hardcoded password used in password.
+
+
+
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Test Summary                                                                                                     │
+│                                                                                                                  │
+│   Organization:      azimsyafawi04                                                                               │
+│   Test type:         Static code analysis                                                                        │
+│   Project path:      C:\Users\User\Desktop\SSD Project Background Change\SSD Project - Copy\secure-django-app    │
+│                                                                                                                  │
+│   Total issues:   12                                                                                             │
+│   Ignored issues: 0 [ 0 HIGH  0 MEDIUM  0 LOW ]                                                                  │
+│   Open issues:    12 [ 0 HIGH  0 MEDIUM  12 LOW ]                                                                │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+    
+💡 Tip
+
+   To view ignored issues, use the --include-ignores option.
+                                                            
+

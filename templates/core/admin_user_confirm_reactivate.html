@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirm Reactivate - {{ target_user.username }}{% endblock %}
+
+{% block content %}
+<div style="max-width: 500px; margin: 4rem auto; text-align: center;">
+    <div class="glass-card">
+        <h2 style="color: var(--success); margin-bottom: 1rem;">Reactivate User</h2>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">Are you sure you want to reactivate user "<strong>{{
+                target_user.username }}</strong>"? This will allow them to log in again.</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <button type="submit" class="btn btn-primary"
+                    style="flex: 1; padding: 0.8rem; background: var(--success);">Confirm Reactivation</button>
+                <a href="{% url 'admin_user_management' %}" class="btn glass-card"
+                    style="flex: 1; padding: 0.8rem; text-align: center; display: flex; align-items: center; justify-content: center;">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

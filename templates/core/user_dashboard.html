@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}My Dashboard - Secure Inventory{% endblock %}
+
+{% block content %}
+<div style="margin-bottom: 3rem;">
+    <h2 style="margin-bottom: 0.5rem;">Welcome, {{ user.username }}</h2>
+    <p style="color: var(--text-muted);">Manage your personal items securely.</p>
+    {% if user_departments %}
+    <p style="margin-top: 0.5rem; font-weight: 500;">
+        Department:
+        {% for dept in user_departments %}
+        {{ dept.name }}{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </p>
+    {% else %}
+    <p style="margin-top: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">No Department Assigned</p>
+    {% endif %}
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+    <div class="glass-card">
+        <h3 style="color: var(--primary-color);">Overview</h3>
+        <p style="font-size: 2.5rem; font-weight: 700; margin: 1rem 0;">{{ count }}</p>
+        <p style="color: var(--text-muted);">Total items in your inventory</p>
+    </div>
+
+    <div class="glass-card">
+        <h3 style="color: var(--primary-color);">Quick Actions</h3>
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+            <a href="{% url 'inventory_create' %}" class="btn btn-primary">Add New Item</a>
+            <a href="{% url 'inventory_list' %}" class="btn glass-card" style="padding: 0.6rem 1.2rem;">View List</a>
+        </div>
+    </div>
+</div>
+
+<div class="glass-card" style="margin-top: 3rem;">
+    <h3 style="margin-bottom: 1.5rem;">Security Status</h3>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+        <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--success);"></div>
+        <span>Session Secured (OWASP ASVS Compliance Level 1)</span>
+    </div>
+</div>
+{% endblock %}

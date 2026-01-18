@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Create Account - Secure Inventory{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.8)),
+        url("{% static 'images/background.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+</style>
+<div style="max-width: 450px; margin: 4rem auto;">
+    <div class="glass-card">
+        <h2 style="margin-bottom: 2rem; text-align: center;">Start Securely</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div style="margin-bottom: 1.25rem;">
+                <label
+                    style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.875rem;">Username</label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                <div style="color: var(--danger); font-size: 0.8rem; margin-top: 0.25rem;">{{ form.username.errors.0 }}
+                </div>
+                {% endif %}
+            </div>
+            <div style="margin-bottom: 1.25rem;">
+                <label
+                    style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.875rem;">Password</label>
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                <div style="color: var(--danger); font-size: 0.8rem; margin-top: 0.25rem;">{{ form.password1.errors.0 }}
+                </div>
+                {% endif %}
+            </div>
+            <div style="margin-bottom: 1.25rem;">
+                <label
+                    style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.875rem;">Confirm
+                    Password</label>
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                <div style="color: var(--danger); font-size: 0.8rem; margin-top: 0.25rem;">{{ form.password2.errors.0 }}
+                </div>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.8rem; margin-top: 1rem;">Create
+                Account</button>
+        </form>
+        <p style="text-align: center; margin-top: 2rem; color: var(--text-muted);">
+            Already have an account? <a href="{% url 'login' %}" style="color: var(--primary-color)">Log in here</a>
+        </p>
+    </div>
+</div>
+
+<style>
+    input {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border-color);
+        border-radius: 0.5rem;
+        padding: 0.75rem;
+        color: white;
+        box-sizing: border-box;
+    }
+
+    input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+    }
+</style>
+{% endblock %}

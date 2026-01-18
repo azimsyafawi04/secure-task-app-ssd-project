@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}System Audit Logs - Admin{% endblock %}
+
+{% block content %}
+<div style="margin-bottom: 3rem;">
+    <h2>System Audit Logs</h2>
+    <p style="color: var(--text-muted);">Complete immutable trail of all system activities.</p>
+</div>
+
+<div class="glass-card">
+    <div style="overflow-x: auto;">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Timestamp</th>
+                    <th>User</th>
+                    <th>Activity</th>
+                    <th>Resource</th>
+                    <th>IP Address</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in audit_logs %}
+                <tr>
+                    <td style="font-size: 0.8rem; color: var(--text-muted);">{{ log.timestamp|date:"Y-m-d H:i:s" }}</td>
+                    <td style="font-weight: 600;">{{ log.user.username|default:"System" }}</td>
+                    <td>
+                        <span style="font-weight: 600; font-size: 0.75rem; padding: 0.2rem 0.5rem; border-radius: 0.25rem; 
+                            {% if log.action == 'DELETE' %}background: rgba(239, 68, 68, 0.2); color: #ef4444;
+                            {% elif log.action == 'CREATE' %}background: rgba(34, 197, 94, 0.2); color: #22c55e;
+                            {% elif log.action == 'LOGIN' %}background: rgba(99, 102, 241, 0.2); color: var(--primary-color);
+                            {% else %}background: rgba(255, 255, 255, 0.1); color: var(--text-muted);{% endif %}">
+                            {{ log.get_action_display|default:log.action }}
+                        </span>
+                    </td>
+                    <td><code
+                            style="background: rgba(255, 255, 255, 0.05); padding: 0.2rem 0.4rem; border-radius: 0.2rem;">{{ log.resource }}</code>
+                    </td>
+                    <td style="font-family: monospace; font-size: 0.8rem;">{{ log.ip_address|default:"-" }}</td>
+                    <td style="font-size: 0.9rem;">{{ log.details }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" style="text-align: center; padding: 3rem; color: var(--text-muted);">No audit
+                        records found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

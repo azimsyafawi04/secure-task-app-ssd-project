@@ -1,0 +1,33 @@
+﻿{% extends 'base.html' %}
+
+{% block title %}Edit Departments - {{ target_user.username }}{% endblock %}
+
+{% block content %}
+<div style="max-width: 600px; margin: 2rem auto;">
+    <div class="glass-card">
+        <h2 style="margin-bottom: 2rem;">Manage Departments for {{ target_user.username }}</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div style="margin-bottom: 1.5rem;">
+                <label
+                    style="display: block; margin-bottom: 1rem; color: var(--text-muted); font-size: 0.875rem;">Select
+                    Departments</label>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    {% for dept in departments %}
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 0.4rem;">
+                        <input type="checkbox" name="departments" value="{{ dept.id }}" {% if dept in user_depts %}checked{% endif %} style="width: auto;">
+                        <span>{{ dept.name }}</span>
+                    </label>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                <button type="submit" class="btn btn-primary" style="flex: 1;">Save Changes</button>
+                <a href="{% url 'admin_user_management' %}" class="btn"
+                    style="background: rgba(255, 255, 255, 0.1); flex: 1; text-align: center;">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

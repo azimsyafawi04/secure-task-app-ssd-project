@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Departments - Secure Inventory{% endblock %}
+
+{% block content %}
+<div style="margin-bottom: 3rem;">
+    <h2>Security: Department Management</h2>
+    <p style="color: var(--text-muted);">Organizing inventory and access via logical departments.</p>
+</div>
+
+<div class="glass-card">
+    <div style="display: flex; justify-content: flex-end; margin-bottom: 2rem;">
+        <a href="{% url 'department_create' %}" class="btn btn-primary">Add Department</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Items Count</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dept in departments %}
+            <tr>
+                <td style="font-weight: 600;">{{ dept.name }}</td>
+                <td>{{ dept.description|truncatechars:50 }}</td>
+                <td>{{ dept.items.count }}</td>
+                <td>
+                    <div style="display: flex; gap: 0.75rem;">
+                        <a href="{% url 'department_edit' dept.id %}"
+                            style="color: var(--primary-color); text-decoration: none;">Edit</a>
+                        <a href="{% url 'department_delete' dept.id %}"
+                            style="color: var(--danger); text-decoration: none;">Delete</a>
+                    </div>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4" style="text-align: center; color: var(--text-muted);">No departments found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

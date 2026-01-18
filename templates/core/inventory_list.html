@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Inventory - Secure Inventory{% endblock %}
+
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+    <div>
+        <h2>Your Inventory</h2>
+        <p style="color: var(--text-muted);">Securely managing your items with ownership enforcement.</p>
+    </div>
+    <a href="{% url 'inventory_create' %}" class="btn btn-primary">+ Add New Item</a>
+</div>
+
+<div class="glass-card">
+    <div style="overflow-x: auto;">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Department</th>
+                    {% if user.is_staff %}<th>Owner</th>{% endif %}
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td style="font-weight: 600;">{{ item.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>RM {{ item.price }}</td>
+                    <td style="color: var(--text-muted); font-size: 0.875rem;">{{ item.department.name|default:"-" }}
+                    </td>
+                    {% if user.is_staff %}<td>{{ item.owner.username }}</td>{% endif %}
+                    <td>
+                        <a href="{% url 'inventory_edit' item.id %}"
+                            style="color: var(--primary-color); margin-right: 1rem; text-decoration: none;">Edit</a>
+                        <a href="{% url 'inventory_delete' item.id %}"
+                            style="color: var(--danger); text-decoration: none;">Delete</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="{% if user.is_staff %}5{% else %}4{% endif %}"
+                        style="text-align: center; padding: 3rem; color: var(--text-muted);">
+                        No items found. Click "Add New Item" to get started.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

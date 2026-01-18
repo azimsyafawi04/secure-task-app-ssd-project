@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirm Delete{% endblock %}
+
+{% block content %}
+<div style="max-width: 500px; margin: 4rem auto; text-align: center;">
+  <div class="glass-card">
+    <h2 style="color: var(--danger); margin-bottom: 1rem;">Confirm Deletion</h2>
+    <p style="color: var(--text-muted); margin-bottom: 1rem;">Are you sure you want to delete the following item? This
+      action cannot be undone.</p>
+    <div
+      style="margin-bottom: 2rem; padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: 0.5rem; text-align: left;">
+      <span style="color: var(--text-muted); font-size: 0.875rem;">Item Name:</span>
+      <strong style="display: block; font-size: 1.125rem; margin-top: 0.25rem;">{{ item.name }}</strong>
+    </div>
+
+    <form method="post">
+      {% csrf_token %}
+      <div style="display: flex; gap: 1rem; justify-content: center;">
+        <button type="submit" class="btn btn-danger" style="flex: 1; padding: 0.8rem;">Delete Permanently</button>
+        <a href="{% url 'inventory_list' %}" class="btn glass-card" style="flex: 1; padding: 0.8rem;">Keep Item</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

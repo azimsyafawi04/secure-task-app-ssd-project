@@ -1,0 +1,28 @@
+﻿{% extends 'base.html' %}
+
+{% block title %}Delete Department - {{ dept.name }}{% endblock %}
+
+{% block content %}
+<div style="max-width: 500px; margin: 4rem auto; text-align: center;">
+    <div class="glass-card">
+        <h2 style="color: var(--danger); margin-bottom: 1rem;">Delete Department</h2>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">Are you sure you want to delete department "<strong>{{ dept.name }}</strong>"? This action cannot be undone.</p>
+
+        {% if dept.items.exists %}
+        <div style="background: rgba(239, 68, 68, 0.1); color: #ef4444; padding: 1rem; border-radius: 0.5rem; margin-bottom: 2rem; font-size: 0.875rem;">
+            This department cannot be deleted because it contains {{ dept.items.count }} inventory items. Please reassign or delete the items first.
+        </div>
+        <a href="{% url 'department_list' %}" class="btn" style="background: rgba(255, 255, 255, 0.1); width: 100%; text-align: center; display: block;">Back to List</a>
+        {% else %}
+        <form method="POST">
+            {% csrf_token %}
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <button type="submit" class="btn btn-danger" style="flex: 1; padding: 0.8rem;">Confirm Delete</button>
+                <a href="{% url 'department_list' %}" class="btn glass-card"
+                    style="flex: 1; padding: 0.8rem; text-align: center; display: flex; align-items: center; justify-content: center;">Cancel</a>
+            </div>
+        </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
