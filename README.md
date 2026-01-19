@@ -4,11 +4,7 @@
 ## 1. Project Description
 [cite_start]The **Secure Task App** is a Django-based web application developed for the course **IKB21503 Secure Software Development** at UniKL MIIT[cite: 78, 93]. [cite_start]This system is designed to allow users to manage personal tasks securely while enforcing proper security controls and **Role-Based Access Control (RBAC)** between normal users and administrators[cite: 79, 81].
 
-## 2. Team Members
-* **HUWAINA YASMIN BINTI ANUAR ASFANDI** (52215124317)
-* **MUHAMMAD RUSMAN HILMI BIN MOHD RAIS** (52215124426)
-* **MUHAMAD AZIM SYAFAWI BIN ABDULLAH** (52215124282)
-* **MUHAMMAD SYAHMI BIN MOHD REZAL** (52215124061)
+
 
 ## 3. Security Features Summary (OWASP Aligned)
 [cite_start]In compliance with **OWASP Top 10** and **ASVS** requirements, the following security features have been implemented[cite: 82, 83]:
@@ -29,7 +25,7 @@
 
 2
    python -m venv venv
-venv\Scripts\activate  # For Windows
+    venv\Scripts\activate  # For Windows
 
 3 Install Dependencies:
 pip install -r requirements.txt
